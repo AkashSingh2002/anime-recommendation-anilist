@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<style>
+    /* General Body Styling */
+    body {
+        background-color: #E3E6E3;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        padding-bottom: 50px; /* Ensure space for the footer */
+    }
+
+    /* Main Div Styling */
+    .main-div {
+        width: 80%;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: white;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        border-radius: 8px;
+    }
+
+    /* Header Styling */
+    header h1 {
+        text-align: center;
+        color: #333;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    /* Navigation Menu Styling */
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    .sub-div {
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        width: 80%;
+        background-color: white;
+        margin: 10px auto;
+        padding: 20px;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sub-div:hover {
+        transform: translateY(-5px);
+        box-shadow: rgba(149, 157, 165, 0.4) 0px 16px 32px;
+    }
+
+    .sub-div a {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        display: block;
+        text-align: center;
+        padding: 10px;
+        transition: color 0.3s ease;
+    }
+
+    .sub-div a:hover {
+        color: #62a03f;
+    }
+
+    /* Footer Styling */
+    footer {
+        background-color: #4A4A4A;
+        padding: 30px;
+        color: white;
+        text-align: center;
+        margin-top: 30px;  /* Add space from the main content */
+    }
+
+    footer h2 {
+        font-size: 1.5rem;
+    }
+
+    footer p {
+        font-size: 1rem;
+        color: #ccc;
+    }
+
+    footer p:last-child {
+        font-size: 0.9rem;
+        margin-top: 10px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .main-div {
+            width: 90%;
+        }
+
+        .sub-div {
+            width: 90%;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Recommendation App</title>
+</head>
+<body>
+    <div class="main-div">
+        <!-- Header Section -->
+        <header>
+            <h1>Welcome to the Anime Recommendation App</h1>
+        </header>
+
+        <!-- Navigation Menu -->
+        <nav>
+            <ul>
+                <div class="sub-div">
+                    <a href="{% url 'loginview' %}">Login</a>
+                </div>
+                <div class="sub-div">
+                    <a href="{% url 'registerview' %}">Register</a>
+                </div>
+                <div class="sub-div">
+                    <a href="{% url 'search_books' %}">Search Anime</a>
+                </div>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <section>
+            <h2>About Our App</h2>
+            <p>This is a simple app to recommend and share your thoughts on anime. You can register, log in, search for anime, and share your recommendations with the community.</p>
+        </section>    
+        <p>&copy; 2024 Anime Recommendation App</p>
+    </footer>
+</body>
+</html>

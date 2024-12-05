@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    h1 {
+        background-color: #62a03f;
+        color: white;
+        padding: 20px;
+        margin: 0;
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .main-div {
+        background-color: white;
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 900px;
+    }
+
+    .main-div h2 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .main-div p {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .main-div .rating {
+        font-weight: bold;
+        color: #62a03f;
+        margin: 10px 0;
+    }
+
+    .main-div .submitted-by {
+        font-size: 0.9rem;
+        color: #888;
+        margin-top: 15px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        .main-div {
+            padding: 15px;
+        }
+
+        .main-div h2 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Recommendations</title>
+</head>
+<body>
+    <h1>Recommendations</h1>
+
+    {% for recommendation in recommendations %}
+        <div class="main-div">
+            <h2>{{ recommendation.bookname }}</h2>
+            <p class="rating">Rating: {{ recommendation.rating }}</p>
+            <p>{{ recommendation.recommendation_text }}</p>
+            <p class="submitted-by">Submitted by: {{ recommendation.user.username }} on {{ recommendation.publication_date }}</p>
+        </div>    
+    {% endfor %}
+
+</body>
+</html>

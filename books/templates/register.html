@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    .register-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f2f5;
+    }
+
+    .registerform {
+        background-color: #ffffff;
+        padding: 40px 60px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 420px;
+        text-align: center;
+    }
+
+    .registerform h1 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .registerform label {
+        font-size: 14px;
+        color: #555;
+        display: block;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .registerform input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        background-color: #fafafa;
+    }
+
+    .registerform input:focus {
+        border-color: #62a03f;
+        outline: none;
+        background-color: #f0f9f3;
+    }
+
+    .registerform button {
+        padding: 12px 0;
+        width: 100%;
+        background-color: #62a03f;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .registerform button:hover {
+        background-color: #5c8d36;
+    }
+
+    .registerform p {
+        font-size: 14px;
+        color: #777;
+    }
+
+    .registerform p a {
+        color: #62a03f;
+        text-decoration: none;
+    }
+
+    .registerform p a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <div class="register-container">
+        <div class="registerform">
+            <h1>Register</h1>
+            <form method="POST" action="{% url 'registerview' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Register</button>
+            </form>
+            <p><b>Already have an account? <a href="{% url 'loginview' %}">Login here</a></b></p>
+        </div>
+    </div>
+</body>
+</html>

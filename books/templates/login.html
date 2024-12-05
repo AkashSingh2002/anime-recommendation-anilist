@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f2f5;
+    }
+
+    .loginform {
+        background-color: #ffffff;
+        padding: 40px 60px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 420px;
+        text-align: center;
+    }
+
+    .loginform h1 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .loginform label {
+        font-size: 14px;
+        color: #555;
+        display: block;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .loginform input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        background-color: #fafafa;
+    }
+
+    .loginform input:focus {
+        border-color: #62a03f;
+        outline: none;
+        background-color: #f0f9f3;
+    }
+
+    .loginform button {
+        padding: 12px 0;
+        width: 100%;
+        background-color: #62a03f;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .loginform button:hover {
+        background-color: #5c8d36;
+    }
+
+    .loginform p {
+        font-size: 14px;
+        color: #777;
+    }
+
+    .loginform p a {
+        color: #62a03f;
+        text-decoration: none;
+    }
+
+    .loginform p a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <div class="loginform">
+            <h1>Login</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Login</button>
+            </form>
+            <p><b>Don't have an account? <a href="{% url 'registerview' %}">Register here</a></b></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    h1 {
+        background-color: #62a03f;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        margin: 0;
+        font-size: 1.8rem;
+    }
+
+    .recform {
+        background-color: #ffffff;
+        padding: 30px;
+        margin: 20px auto;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    label {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        display: inline-block;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+
+    input[type="text"], input[type="email"] {
+        height: 40px;
+    }
+
+    textarea {
+        height: 120px;
+        resize: vertical;
+    }
+
+    button {
+        padding: 12px 30px;
+        background-color: #62a03f;
+        color: white;
+        border: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #4f8d2a;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .recform {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+</style>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Recommendation</title>
+</head>
+<body>
+    <h1>Submit Recommendation</h1>
+    <div class="recform">        
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

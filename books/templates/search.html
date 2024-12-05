@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<style>
+    /* General Body Styling */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    h1 {
+        margin-top: 10px;
+        font-size: 2rem;
+        color: #333;
+    }
+
+    .search-div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #62a03f;
+        color: white;
+        padding: 15px 20px;
+        margin-bottom: 30px;
+    }
+
+    .search-div h1 {
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    form {
+        display: flex;
+        align-items: center;
+    }
+
+    input {
+        width: 500px;
+        height: 35px;
+        padding-left: 10px;
+        border-radius: 5px;
+        border: 1px solid #62a03f;
+    }
+
+    button {
+        height: 41.5px;
+        background-color: #62a03f;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    button:hover {
+        background-color: #4e8a2f;
+    }
+
+    /* Styling for Anime Display Section */
+    .anime-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .main-div {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        padding: 15px;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .main-div:hover {
+        transform: translateY(-5px);
+        box-shadow: rgba(149, 157, 165, 0.4) 0px 16px 32px;
+    }
+
+    .sub-div1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .sub-div1 img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .sub-div2 {
+        padding-left: 10px;
+    }
+
+    .sub-div2 h3 {
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+    .sub-div2 p {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .no-results {
+        text-align: center;
+        color: #999;
+        font-size: 1.2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .search-div {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .search-div h1 {
+            font-size: 1.5rem;
+        }
+
+        input {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+</style>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Search</title>
+</head>
+<body>
+    <!-- Search Bar -->
+    <div class="search-div">
+        <h1>Anime Search</h1>
+        <form method="get" action="{% url 'search_books' %}">
+            <input type="text" name="q" placeholder="Search for anime" value="{{ request.GET.q }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- Display All Anime or Search Results -->
+    <div class="anime-list">
+        {% if books %}
+            {% if request.GET.q %}
+                <h2>Search Results for "{{ request.GET.q }}":</h2>
+            {% else %}
+                <h2>All Anime:</h2>
+            {% endif %}
+
+            <!-- Loop through books (anime list) and display each card -->
+            {% for book in books %}
+                <div class="main-div">
+                    <div class="sub-div1">
+                        <h3>{{ book.title }}</h3>
+                        {% if book.cover_image %}
+                        <img src="{{ book.cover_image }}" alt="Cover Image">
+                        {% endif %}
+                    </div>
+                    <div class="sub-div2">
+                        <p><strong>Description:</strong> {{ book.description }}</p>
+                        <p><strong>Rating:</strong> {{ book.rating }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-results">No anime found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

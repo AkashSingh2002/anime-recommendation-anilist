@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+
+    /* Center the main content */
+    .main-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 20px;
+        margin-top: 30px;
+        min-height: 80vh; /* Ensures enough height for centering */
+    }
+
+    /* Styling for individual cards */
+    .sub-div {
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        width: 280px;
+        background-color: #ffffff;
+        margin: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .sub-div:hover {
+        transform: scale(1.05);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #62a03f;
+    }
+
+    .logout {
+        color: red;
+    }
+
+    .sub-div li {
+        list-style: none;
+        margin-bottom: 15px;
+    }
+
+    /* Styling for the header */
+    header nav {
+        padding: 15px;
+        background-color: #ffffff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    header ul {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    header li {
+        margin: 0 15px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .main-div {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sub-div {
+            width: 100%;
+            max-width: 350px;
+        }
+
+        header ul {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header li {
+            margin: 10px 0;
+        }
+    }
+</style>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <!-- Header with only Logout -->
+    <header class="main-header">
+        <nav>
+            <ul>
+                <li><a class="logout" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content section for cards -->
+    <div class="main-div">
+        <div class="sub-div">
+            <ul>
+                <li><a href="{% url 'search_books' %}">Search Books</a></li>
+            </ul>
+        </div>
+
+        {% if user.is_authenticated %}
+            <div class="sub-div">
+                <ul>
+                    <li><a href="{% url 'submit_recommendation_view' %}">Submit Recommendation</a></li>
+                </ul>
+            </div>
+            <div class="sub-div">
+                <ul>
+                    <li><a href="{% url 'view_recommendations' %}">View Recommendations</a></li>
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>
