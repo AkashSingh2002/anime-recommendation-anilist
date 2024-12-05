@@ -10,7 +10,7 @@ Created By: Akash Singh(akashsingh14032000@gmail.com)
 - User Login
 - View Recommendations,Submit Recommendations
 - Filter Recommendations
-- Search Books(Google Books API)
+- Search anime Books(AniList Books API)
 - Like Recommendations
 
 ## Project Setup Instructions
